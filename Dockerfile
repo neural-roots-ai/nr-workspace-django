@@ -46,5 +46,7 @@ USER appuser
 
 WORKDIR /app/src
 
+EXPOSE 8001
+
 # Start the application using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "--workers", "1", "workspace.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "--workers", "3", "workspace.wsgi:application"]
