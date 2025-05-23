@@ -135,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = "SAMEORIGIN"              # allows you to use modals insated of popups
 SILENCED_SYSTEM_CHECKS = ["security.W019"]  # ignores redundant warning messages
+
+CSRF_TRUSTED_ORIGINS = ['https://workspace.neuralroots.in', 'https://neuralroots.in']
