@@ -48,5 +48,9 @@ WORKDIR /app/src
 
 EXPOSE 8001
 
+RUN python manage.py migrate --noinput
+
+RUN python manage.py collectstatic --no-input --clear
+
 # Start the application using Gunicorn
 #CMD ["gunicorn", "--bind", "0.0.0.0:8001", "--workers", "3", "workspace.wsgi:application"]
