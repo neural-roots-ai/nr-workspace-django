@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'program.apps.ProgramConfig',
     "import_export",
-    "djangoql"
+    "djangoql",
+    "client",
 ]
 
 MIDDLEWARE = [
