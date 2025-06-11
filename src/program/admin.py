@@ -105,3 +105,42 @@ class ProgramTypeAdmin(DjangoQLSearchMixin, ImportExportActionModelAdmin):
             "is_active"
         ]
 
+
+@admin.register(models.Project)
+class ProjectAdmin(DjangoQLSearchMixin, ImportExportActionModelAdmin):
+    list_display = [
+        'project_title',
+        "program_id",
+        "is_active"
+    ]
+    list_filter = ("program_id",)
+
+
+@admin.register(models.Mentor)
+class MentorAdmin(DjangoQLSearchMixin, ImportExportActionModelAdmin):
+    list_display = [
+        'name',
+        "degree",
+        "work_exp",
+        "company",
+        "is_active"
+    ]
+
+
+@admin.register(models.ProgramMapping)
+class ProgramMappingAdmin(DjangoQLSearchMixin, ImportExportActionModelAdmin):
+    list_display = [
+        'name',
+        "desc",
+        "is_active"
+    ]
+
+
+@admin.register(models.ImageMapping)
+class ImageMappingAdmin(DjangoQLSearchMixin, ImportExportActionModelAdmin):
+    list_display = [
+        'name',
+        "desc",
+        "img_path",
+        "is_active",
+    ]

@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'program.apps.ProgramConfig',
+    'notification.apps.NotificationConfig',
     "import_export",
     "djangoql"
 ]
@@ -98,6 +99,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     'staticfiles': {
         'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
     },
