@@ -46,6 +46,7 @@ class Program(models.Model):
     is_active = models.BooleanField()
     created_on = models.DateTimeField()
     updated_on = models.DateTimeField()
+    program_desc = models.CharField()
 
     def __str__(self):
         return self.program_name
