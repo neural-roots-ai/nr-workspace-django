@@ -32,9 +32,25 @@ COPY --from=builder /app/src/static_root ./src/static_root
 # copy nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# copy entrypoint
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+RUN cat > /docker-entrypoint.sh << 'EOF'
+#!/bin/sh
+set -e
+
+echo "Running migrations..."
+cd /app/src
+python manage.py migrate --no-input
+
+echo "Starting gunicorn..."
+gunicorn workspace.wsgi:application \
+  --bind 127.0.0.1:8001 \
+  --workers 3 \
+  --daemon \
+  --log-file /var/log/gunicorn.log \
+  --error-logfile /var/log/gunicorn-error.log
+
+echo "Starting nginx..."
+exec nginx -g "daemon off;"
+EOF
 
 EXPOSE 80
 
